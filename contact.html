@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Espoir Tiers Monde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #6B7FE8;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            color: #4A5568;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: #6B7FE8;
+        }
+
+        .nav-menu li a.active {
+            color: #6B7FE8;
+        }
+
+        .btn-donate {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C86DD7 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-contact {
+            margin-top: 80px;
+            height: 40vh;
+            background: linear-gradient(135deg, rgba(107, 127, 232, 0.85), rgba(200, 109, 215, 0.85)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%234A5568" width="1920" height="1080"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-contact h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .contact-intro h2 {
+            font-size: 2.5rem;
+            color: #2D3748;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-intro p {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Offices Grid */
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-bottom: 70px;
+        }
+
+        .office-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border-top: 4px solid #6B7FE8;
+        }
+
+        .office-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(107, 127, 232, 0.15);
+        }
+
+        .office-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .office-icon {
+            font-size: 2.5rem;
+        }
+
+        .office-header h3 {
+            font-size: 1.8rem;
+            color: #2D3748;
+            font-weight: 700;
+        }
+
+        .office-details {
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: #4A5568;
+            font-size: 1.05rem;
+        }
+
+        .detail-icon {
+            color: #6B7FE8;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .detail-item strong {
+            color: #2D3748;
+            min-width: 90px;
+        }
+
+        .phone-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        /* Contact Methods */
+        .contact-methods {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin-bottom: 70px;
+        }
+
+        .contact-methods h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2D3748;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(107, 127, 232, 0.15);
+        }
+
+        .method-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .method-card h4 {
+            color: #2D3748;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .method-card a {
+            color: #6B7FE8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .method-card a:hover {
+            color: #C86DD7;
+        }
+
+        /* Legal Info */
+        .legal-info {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            margin-bottom: 70px;
+        }
+
+        .legal-info h3 {
+            font-size: 1.8rem;
+            color: #2D3748;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .legal-item {
+            padding: 20px;
+            background: #F7FAFC;
+            border-radius: 12px;
+            border-left: 3px solid #6B7FE8;
+        }
+
+        .legal-item strong {
+            color: #2D3748;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .legal-item span {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #6B7FE8, #C86DD7);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            background: white;
+            color: #6B7FE8;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #2D3748;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 5px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+
+            .hero-contact h1 {
+                font-size: 2.2rem;
+                padding: 0 20px;
+            }
+
+            .offices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span>🌍</span>
+                <span>Espoir Tiers Monde</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#mission">Notre Mission</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#presentation">Présentation</a></li>
+                <li><a href="#contact" class="active">Contact</a></li>
+                <li><a href="#don" class="btn-donate">Faire un don</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-contact">
+        <h1>Contactez-Nous</h1>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <!-- Intro -->
+        <div class="contact-intro">
+            <h2>Nous Sommes à Votre Écoute</h2>
+            <p>N'hésitez pas à nous contacter pour toute question, projet de partenariat ou pour en savoir plus sur nos actions humanitaires.</p>
+        </div>
+
+        <!-- Offices -->
+        <div class="offices-grid">
+            <!-- Abidjan Office -->
+            <div class="office-card">
+                <div class="office-header">
+                    <span class="office-icon">🏢</span>
+                    <h3>Abidjan</h3>
+                </div>
+                <div class="office-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">📍</span>
+                        <div>
+                            <strong>Adresse :</strong>
+                            <p>TREICHVILLE BOULEVARD VGE, FACE AU FDFP<br>25 BP 974 Abidjan 25</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">📞</span>
+                        <div>
+                            <strong>Téléphone :</strong>
+                            <div class="phone-numbers">
+                                <span>(225) 21 24 03 65</span>
+                                <span>(225) 21 24 03 93</span>
+                                <span>(225) 07 65 95 12</span>
+                                <span>(225) 05 89 45 83</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Napié Office -->
+            <div class="office-card">
+                <div class="office-header">
+                    <span class="office-icon">🏢</span>
+                    <h3>Napié</h3>
+                </div>
+                <div class="office-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">📍</span>
+                        <div>
+                            <strong>Adresse :</strong>
+                            <p>Centre Ville<br>District de Korhogo<br>Région des POROS</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">📞</span>
+                        <div>
+                            <strong>Téléphone :</strong>
+                            <div class="phone-numbers">
+                                <span>(225) 09 25 90 35</span>
+                                <span>(225) 05 70 71 81</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="contact-methods">
+            <h3>Autres Moyens de Contact</h3>
+            <div class="methods-grid">
+                <div class="method-card">
+                    <span class="method-icon">📧</span>
+                    <h4>Email</h4>
+                    <a href="mailto:info@espoirtiersmonde.org">info@espoirtiersmonde.org</a><br>
+                    <a href="mailto:etmbci@gmail.com">etmbci@gmail.com</a>
+                </div>
+                <div class="method-card">
+                    <span class="method-icon">📱</span>
+                    <h4>Facebook</h4>
+                    <a href="https://facebook.com/EspoirTiersMonde" target="_blank">Espoir Tiers Monde</a>
+                </div>
+                <div class="method-card">
+                    <span class="method-icon">🌐</span>
+                    <h4>Site Web</h4>
+                    <a href="http://www.espoirtiersmonde.org" target="_blank">www.espoirtiersmonde.org</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Info -->
+        <div class="legal-info">
+            <h3>Informations Légales & Administratives</h3>
+            <div class="legal-grid">
+                <div class="legal-item">
+                    <strong>CC N°</strong>
+                    <span>0919130 D</span>
+                </div>
+                <div class="legal-item">
+                    <strong>CNPS N°</strong>
+                    <span>26 – 208. 191</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Code Import/Export</strong>
+                    <span>65317 x</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Arrêté Ministériel</strong>
+                    <span>704/MEMAT/DGAP/DAG/SDVA du 21/09/2005</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Journal Officiel</strong>
+                    <span>N° 39 du 29/09/2005</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Envie de Faire Partie de l'Aventure ?</h2>
+            <p>Rejoignez-nous dans notre mission pour un monde meilleur</p>
+            <a href="#don" class="btn-cta">Devenir Partenaire</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Espoir Tiers Monde. Tous droits réservés.</p>
+        <p>Pour un monde meilleur, en paix et en sécurité 🌍</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.office-card, .method-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

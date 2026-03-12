@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Mission - Espoir Tiers Monde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #6B7FE8;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            color: #4A5568;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: #6B7FE8;
+        }
+
+        .nav-menu li a.active {
+            color: #6B7FE8;
+        }
+
+        .btn-donate {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C86DD7 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-mission {
+            margin-top: 80px;
+            height: 50vh;
+            background: linear-gradient(135deg, rgba(107, 127, 232, 0.85), rgba(200, 109, 215, 0.85)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%234A5568" width="1920" height="1080"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-mission h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        /* Mission Content */
+        .mission-intro {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .mission-intro h2 {
+            font-size: 2.5rem;
+            color: #2D3748;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .mission-intro p {
+            font-size: 1.2rem;
+            color: #718096;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Objectives Section */
+        .objectives-section {
+            background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+            padding: 80px 40px;
+        }
+
+        .objectives-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .objectives-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #2D3748;
+            margin-bottom: 70px;
+            font-weight: 700;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+
+        .objective-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
+            border-left: 5px solid transparent;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(107, 127, 232, 0.15);
+            border-left-color: #6B7FE8;
+        }
+
+        .objective-number {
+            background: linear-gradient(135deg, #6B7FE8, #C86DD7);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .objective-content h3 {
+            color: #2D3748;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .objective-content p {
+            color: #718096;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .values-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #2D3748;
+            margin-bottom: 70px;
+            font-weight: 700;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #F7FAFC, white);
+            border-radius: 16px;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(107, 127, 232, 0.1);
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .value-card h3 {
+            color: #2D3748;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: #718096;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #6B7FE8, #C86DD7);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            background: white;
+            color: #6B7FE8;
+            padding: 18px 45px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #2D3748;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 5px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+
+            .hero-mission h1 {
+                font-size: 2.2rem;
+                padding: 0 20px;
+            }
+
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-intro {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span>🌍</span>
+                <span>Espoir Tiers Monde</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#mission" class="active">Notre Mission</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#don" class="btn-donate">Faire un don</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-mission">
+        <h1>Notre Mission</h1>
+    </section>
+
+    <!-- Mission Intro -->
+    <section class="mission-intro">
+        <h2>Gouvernance et Pilotage Stratégique</h2>
+        <p>La gouvernance et le pilotage stratégique d'Espoir Tiers Monde, dans sa mission de développement pour le progrès et l'action humanitaire, visent à transformer durablement les conditions de vie des populations les plus vulnérables à travers le monde.</p>
+    </section>
+
+    <!-- Objectives Section -->
+    <section class="objectives-section">
+        <div class="objectives-container">
+            <h2 class="objectives-title">Nos Objectifs Institutionnels</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-number">1</div>
+                    <div class="objective-content">
+                        <h3>Amélioration des Conditions de Vie</h3>
+                        <p>L'amélioration continue des conditions de vie et d'existence des populations à travers des programmes concrets et durables.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">2</div>
+                    <div class="objective-content">
+                        <h3>Qualité des Populations</h3>
+                        <p>L'amélioration croissante de la qualité de vie des populations et des communautés par l'accès aux services essentiels.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">3</div>
+                    <div class="objective-content">
+                        <h3>Espérance de Vie</h3>
+                        <p>La progression constante de l'espérance de vie des populations dans les communautés grâce à de meilleurs soins de santé.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">4</div>
+                    <div class="objective-content">
+                        <h3>Croissance Économique</h3>
+                        <p>La croissance économique dans les communautés et territoires décentralisés, l'augmentation du revenu par habitant et du pouvoir d'achat.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">5</div>
+                    <div class="objective-content">
+                        <h3>Émergence Économique</h3>
+                        <p>L'émergence économique et le développement social national pour un avenir prospère et équitable.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">6</div>
+                    <div class="objective-content">
+                        <h3>Droits Humains</h3>
+                        <p>Le respect de la vie humaine et la protection des droits humains fondamentaux pour tous.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">7</div>
+                    <div class="objective-content">
+                        <h3>Bonne Gouvernance</h3>
+                        <p>La promotion de la bonne gouvernance de l'État, la paix et la sécurité dans les nations.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">8</div>
+                    <div class="objective-content">
+                        <h3>Lutte Contre la Pauvreté</h3>
+                        <p>La réduction des poches de pauvreté et l'élimination des pires formes de misère.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">9</div>
+                    <div class="objective-content">
+                        <h3>Préservation de l'Environnement</h3>
+                        <p>La préservation de l'environnement et des ressources naturelles pour les générations à venir.</p>
+                    </div>
+                </div>
+
+                <div class="objective-card">
+                    <div class="objective-number">10</div>
+                    <div class="objective-content">
+                        <h3>Solidarité Internationale</h3>
+                        <p>Le développement de la solidarité internationale et de l'action humanitaire pour un monde meilleur, mieux gouverné, en sécurité et en paix.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2 class="values-title">Nos Valeurs Fondamentales</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-icon">🤝</span>
+                <h3>Solidarité</h3>
+                <p>Nous croyons en la force de l'union et de l'entraide pour surmonter les défis.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">💎</span>
+                <h3>Transparence</h3>
+                <p>Une gouvernance transparente et responsable au service des populations.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🌱</span>
+                <h3>Durabilité</h3>
+                <p>Des actions pensées pour un impact durable sur les générations futures.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">⚖️</span>
+                <h3>Équité</h3>
+                <p>L'égalité des chances et la justice sociale pour tous sans distinction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Rejoignez Notre Mission</h2>
+        <p>Ensemble, nous pouvons construire un monde meilleur, plus juste et plus solidaire</p>
+        <a href="#don" class="btn-cta">Soutenir nos actions</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Espoir Tiers Monde. Tous droits réservés.</p>
+        <p>Pour un monde meilleur, en paix et en sécurité 🌍</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.objective-card, .value-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
